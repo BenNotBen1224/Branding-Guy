@@ -1,10 +1,10 @@
-# Stateful-Agent
+# Branding-King
 
 A sophisticated agent system that maintains state and context through the combination of persistent entity storage (SQLite) and vector-based memory (ChromaDB).
 
 ## Overview
 
-Stateful-Agent is designed to provide a robust solution for maintaining conversational context and user information across interactions. It leverages two different types of databases:
+Branding-King is designed to provide a robust solution for maintaining conversational context and user information across interactions. It leverages two different types of databases:
 
 - **SQLite**: For structured data storage and retrieval of user information and persistent state
 - **ChromaDB**: For vector-based storage enabling semantic search and contextual memory
@@ -17,15 +17,11 @@ Stateful-Agent is designed to provide a robust solution for maintaining conversa
 - 🚫 Duplicate prevention for user entries
 - ✅ Structured data validation and management
 - 📄 PDF document processing and analysis
-- 🔗 Integration with various external tools (GitHub, Slack, Google)
 - 📚 Research lab collections management
 - 📖 Google Scholar paper tracking and crawling
 - 🔬 Paper recommendation based on research interests
 - 📝 Contextual paper summarization with related research
 
-## New Features: Paper Recommendation and Summary
-
-The agent now supports robust academic paper management and recommendation features:
 
 ### Research Lab Management
 
@@ -105,8 +101,9 @@ The LinkedIn publisher is available as an agent tool and can be used with the fo
 
 ## Project Structure
 
-```stateful-agent/
-├── stateful_agent/           # Main package directory
+```
+branding_king/
+├── branding_king/           # Main package directory
 │   ├── tools/               # Tool implementations
 │   │   ├── sqlite.py        # Entity database operations
 │   │   ├── chromadb.py      # Vector database operations
@@ -126,61 +123,60 @@ The LinkedIn publisher is available as an agent tool and can be used with the fo
 - Python 3.11 or higher
 - OpenAI API key (gpt-4o model for paper summarization and embeddings)
 - Internet connection for accessing Google Scholar and arXiv
+- Conda package manager
 
 ## Installation
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/nsd9696/stateful-agent.git
-cd stateful-agent
+git clone https://github.com/BenNotBen1224/Branding-King.git
+cd Branding-King
 ```
 
-2. Create and activate a virtual environment:
+2. Create and activate a conda environment:
 
 ```bash
-cd stateful_agent
+cd branding_king
+conda create -n branding-king python=3.11
+conda activate branding-king
+conda install -c conda-forge chromadb openai langchain beautifulsoup4 selenium
+pip install -e .
 ```
-
-- .env
-
-```bash
-pip install uv
-uv pip install -e ".[dev]"
-```
-
 
 ## Configuration
 
-1. Create necessary configuration files in the `stateful_agent` directory:
+1. Create necessary configuration files in the `branding_king` directory:
 
 ### .env
 
 ```env
+# OpenAI Configuration
+OPENAI_API_KEY_AGENT=your_agent_api_key
 OPENAI_EMBEDDING_MODEL=text-embedding-3-large
-OPENAI_API_KEY=YOUR_OPENAI_KEY
+OPENAI_API_KEY_SUMMARIZER=your_summarizer_api_key
 
+# Database Paths
 CHROMA_PERSIST_DIRECTORY=./chroma_langchain_db
 SQLITE_DB_PATH=./sqlite_langchain_db.db
 DEFAULT_DATA_DIR=./data
+
+# LinkedIn Configuration
+LINKEDIN_USER_ID=your_user_id
+LINKEDIN_ACCESS_TOKEN=your_access_token
 ```
 
 ## Usage
 
-1. Prepare the environment:
+
+1. Run the agent:
 
 ```bash
-cd stateful_agent
-mkdir -p data/recommendation
-```
-
-2. Run the agent:
-
-```bash
+cd branding_king
 python agent.py
 ```
 
-3. Example interactions:
+2. Example interactions:
 
 ```
 # Create a new research lab
@@ -236,3 +232,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [OpenAI](https://openai.com/) for embedding and completion APIs
 - [arXiv](https://arxiv.org/) for access to research papers
 - [Zotero-arXiv-Daily](https://github.com/TideDra/zotero-arxiv-daily) for inspiration on paper recommendation
+- [Trae IDE](https://trae.tech/) for providing an excellent development environment
